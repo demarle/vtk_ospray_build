@@ -1,3 +1,7 @@
+[submodule "embree"]
+	path = embree
+	url = https://github.com/embree/embree.git
+	branch = master
 [submodule "ospray"]
 	path = ospray
 	url = https://github.com/ospray/ospray

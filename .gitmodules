@@ -1,0 +1,8 @@
+[submodule "ospray"]
+	path = ospray
+	url = https://github.com/ospray/ospray
+	branch = master
+[submodule "vtk"]
+	path = vtk
+	url = git://vtk.org/VTK.git
+	branch = master

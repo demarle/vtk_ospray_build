@@ -38,7 +38,8 @@ set -eux
 (
     mkcd ospray
     cmake ../../ospray \
-        -DCMAKE_INSTALL_PREFIX=../install
+        -DCMAKE_INSTALL_PREFIX=../install \
+        -DCMAKE_BUILD_TYPE=Debug
     make -j install
 )
 
@@ -49,7 +50,7 @@ set -eux
         -DCMAKE_INSTALL_PREFIX=../install \
         -DBUILD_TESTING=OFF \
         -DBUILD_SHARED_LIBS=ON \
-        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_BUILD_TYPE=Debug \
         -DModule_vtkRenderingOSPRay=ON \
         -DOSPRAY_INSTALL_DIR=../install \
         -DVTK_Group_Qt=ON \

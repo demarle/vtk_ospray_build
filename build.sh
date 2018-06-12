@@ -30,10 +30,25 @@ set -eux
 
     curl -L https://astuteinternet.dl.sourceforge.net/project/ispcmirror/v1.9.2/ispc-v1.9.2-linux.tar.gz -O
     tar xfz ispc-v1.9.2-linux.tar.gz -C ../install/bin ispc-v1.9.2-linux/ispc --strip-components=1
+)
 
+(
+    mkcd embree
+    # https://github.com/embree/embree/issues/190
+    cmake ../../embree \
+        -DCMAKE_INSTALL_PREFIX=../install \
+        -DEMBREE_TUTORIALS=OFF \
+        -DEMBREE_ISA_AVX512KNL=OFF \
+        -DEMBREE_ISA_AVX512SKX=OFF
+    make -j install
+)
 
-    curl -L https://github.com/ospray/ospray/releases/download/v1.5.0/ospray-1.5.0.x86_64.linux.tar.gz -O
-    tar xfz ospray-1.5.0.x86_64.linux.tar.gz -C ../install --strip-components=1
+(
+    mkcd ospray
+    cmake ../../ospray \
+        -DCMAKE_INSTALL_PREFIX=../install \
+        -DCMAKE_BUILD_TYPE=Debug
+    make -j install
 )
 
 (

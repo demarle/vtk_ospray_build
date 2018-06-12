@@ -31,25 +31,8 @@ set -eux
     curl -L https://astuteinternet.dl.sourceforge.net/project/ispcmirror/v1.9.2/ispc-v1.9.2-linux.tar.gz -O
     tar xfz ispc-v1.9.2-linux.tar.gz -C ../install/bin ispc-v1.9.2-linux/ispc --strip-components=1
 
-    curl -L https://github.com/01org/tbb/releases/download/2018_U4/tbb2018_20180411oss_lin.tgz -O
-    tar xfz tbb2018_20180411oss_lin.tgz -C ../install --strip-components=1
-)
-
-(
-    cd install/lib
-    ln -s intel64/gcc4.4/libtbb.so.2 .
-    ln -s libtbb.so.2 libtbb.so
-)
-
-(
-    mkcd embree
-    # https://github.com/embree/embree/issues/190
-    cmake ../../embree \
-        -DCMAKE_INSTALL_PREFIX=../install \
-        -DEMBREE_TUTORIALS=OFF \
-        -DEMBREE_ISA_AVX512KNL=OFF \
-        -DEMBREE_ISA_AVX512SKX=OFF
-    make -j install
+    curl -L https://github.com/embree/embree/releases/download/v2.17.4/embree-2.17.4.x86_64.linux.tar.gz -O
+    tar xfz embree-2.17.4.x86_64.linux.tar.gz -C ../install --strip-components=1
 )
 
 (

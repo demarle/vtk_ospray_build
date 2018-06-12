@@ -16,9 +16,6 @@ export-prepend ()
     eval "export $1=\"$2:\$$1\""
 }
 
-export CC=clang-4.0 CXX=clang++-4.0 FC=gfortran-5
-
-
 rm -rf build
 mkcd build
 
@@ -42,7 +39,8 @@ set -eux
         -DCMAKE_INSTALL_PREFIX=../install \
         -DEMBREE_TUTORIALS=OFF \
         -DEMBREE_ISA_AVX512KNL=OFF \
-        -DEMBREE_ISA_AVX512SKX=OFF
+        -DEMBREE_ISA_AVX512SKX=OFF \
+        -DEMBREE_TASKING_SYSTEM=INTERNAL
     make -j install
 )
 
@@ -50,7 +48,8 @@ set -eux
     mkcd ospray
     cmake ../../ospray \
         -DCMAKE_INSTALL_PREFIX=../install \
-        -DCMAKE_BUILD_TYPE=Debug
+        -DCMAKE_BUILD_TYPE=Debug \
+        -DOSPRAY_TASKING_SYSTEM=INTERNAL
     make -j install
 )
 

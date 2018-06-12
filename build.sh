@@ -16,6 +16,9 @@ export-prepend ()
     eval "export $1=\"$2:\$$1\""
 }
 
+export CC=clang-4.0 CXX=clang++-4.0 FC=gfortran-5
+
+
 rm -rf build
 mkcd build
 
